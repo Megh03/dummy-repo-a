@@ -1,11 +1,13 @@
 steps:
-  - trigger: "dummy-repo-b"
-    label: "🔗 Trigger Repo B build"
-    build:
-      message: "${BUILDKITE_MESSAGE}"
-      commit: "HEAD"
-      branch: "main"
-      env:
-        UPSTREAM_PULL_REQUEST: "${BUILDKITE_PULL_REQUEST}"
-        UPSTREAM_PULL_REQUEST_BASE_BRANCH: "${BUILDKITE_PULL_REQUEST_BASE_BRANCH}"
-        UPSTREAM_PULL_REQUEST_REPO: "${BUILDKITE_PULL_REQUEST_REPO}"
+  - label: ":lock: secrets policy test"
+    command: |
+      echo "BUILDKITE_BRANCH=$BUILDKITE_BRANCH"
+      echo "BUILDKITE_TAG=$BUILDKITE_TAG"
+      if [ -n "${DEMO_SECRET:-}" ]; then
+        echo "Secret is present (len=${#DEMO_SECRET})"
+      else
+        echo "Secret is NOT present"
+        exit 1
+      fi
+    secrets:
+      - DEMO_SECRET
