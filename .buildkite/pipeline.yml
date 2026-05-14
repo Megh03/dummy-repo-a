@@ -1,5 +1,5 @@
 steps:
-  - label: ":lock: secrets policy test"
+  - label: ":lock: secrets test"
     command: |
       echo "BUILDKITE_BRANCH=$BUILDKITE_BRANCH"
       echo "BUILDKITE_TAG=$BUILDKITE_TAG"
