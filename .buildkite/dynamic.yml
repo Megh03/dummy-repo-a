@@ -1,0 +1,23 @@
+steps:
+    - label: "✅ if=true + if_changed matched"
+      command: "echo 'both conditions pass'"
+      if: "build.branch != null"
+      if_changed: "README.md"
+      
+    - label: "⏭️  if=true + if_changed no match"
+      command: "echo 'you should never see this'"
+      if: "build.branch != null"
+      if_changed: "this-file-does-not-exist-anywhere/**"
+
+    - label: "🚫 if=false + if_changed matched"
+      command: "echo 'you should never see this'"
+      if: "build.branch == 'this-branch-does-not-exist'"
+      if_changed: "README.md"
+      
+    - label: "🚫 if=false + if_changed no match"
+      command: "echo 'you should never see this'"
+      if: "build.branch == 'this-branch-does-not-exist'"
+      if_changed: "this-file-does-not-exist-anywhere/**"
+      
+    - label: "🏁 sanity check"
+      command: "echo 'build finished'"
