@@ -1,2 +1,3 @@
 hello
-don't trigger trigger
+hello 
+hello
