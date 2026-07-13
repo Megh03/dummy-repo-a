@@ -1,0 +1,3 @@
+This file only exists on the unreviewed feature branch.
+If a checkout hook correctly redirects to main, this file
+should NOT be present in the checked-out working directory.
