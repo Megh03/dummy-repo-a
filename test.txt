@@ -3,3 +3,6 @@ hello
 hello
 hello
 hello
+repro test commit 1 - 1784757472
+repro test commit 2 (rebased) - 1784757548
+repro test commit 3 (rebased again, testing edited/base-branch-changed setting) - 1784776295
