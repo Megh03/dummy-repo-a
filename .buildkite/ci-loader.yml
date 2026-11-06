@@ -9,7 +9,7 @@ steps:
     agents:
       queue: aws
   - label: "Load CI"
-    if: build.pull_request.draft != true || "$BUILDKITE_BUILD_CREATOR_EMAIL" !~ /^(156944169\+Megh03@users\.noreply\.github\.com)$$/
+    if: build.pull_request.draft != true || "$BUILDKITE_BUILD_CREATOR_EMAIL" !~ /^(meghana@buildkite\.com|156944169\+Megh03@users\.noreply\.github\.com)$$/
     command: buildkite-agent pipeline upload .buildkite/ci.yml
     agents:
       queue: aws
