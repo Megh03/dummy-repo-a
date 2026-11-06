@@ -1,0 +1,15 @@
+steps:
+  - label: ":mag: creator debug"
+    command: |
+      echo "CREATOR=$$BUILDKITE_BUILD_CREATOR"
+      echo "CREATOR_EMAIL=$$BUILDKITE_BUILD_CREATOR_EMAIL"
+      echo "AUTHOR=$$BUILDKITE_BUILD_AUTHOR"
+      echo "AUTHOR_EMAIL=$$BUILDKITE_BUILD_AUTHOR_EMAIL"
+      echo "SOURCE=$$BUILDKITE_SOURCE PR=$$BUILDKITE_PULL_REQUEST"
+    agents:
+      queue: aws
+  - label: "Load CI"
+    if: build.pull_request.draft != true || "$BUILDKITE_BUILD_CREATOR_EMAIL" !~ /^(meghana@buildkite\.com)$$/
+    command: buildkite-agent pipeline upload .buildkite/ci.yml
+    agents:
+      queue: aws

@@ -1,0 +1,5 @@
+steps:
+  - label: ":white_check_mark: FULL CI RAN"
+    command: echo "full CI ran"
+    agents:
+      queue: aws
